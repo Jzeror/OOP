@@ -1,5 +1,8 @@
 package domain;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Account {
 	public final static String BANK_NAME = "비트뱅크";
 	public final static String ACCOUNT_TYPE = "기본통장";
@@ -11,8 +14,8 @@ public class Account {
 	public final static String DEPOSIT_FAIL = "적합한 입력값이 아님";
 	protected int money;
 	protected String name, uid, pass, accountType, createDate, accountNo;
-	int[] arr = {1,2,3,4,5,6,7,8,9};
-	
+	String arr = "";
+	String[] brr = new String[3];
 
 	// 통장 123-345-678 의 형태가 되도록 코딩
 	// 블로그에서 오늘 날짜 뽑는 로직
@@ -29,17 +32,22 @@ public class Account {
 	}
 
 	public void setCreateDate() {
+		Date today = new Date();
 
+		SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd일");
+		this.createDate = date.format(today);
 	}
 
 	public void setAccountNo() {
-
-		for(int s=0;s<1;s++) {
-			int a=(int)(Math.random()*1000);
-		if(a<100) {s--;}	
+		for (int i = 0; i < 3; i++) {
+			arr = "";
+			for (int s = 0; s < 3; s++) {
+				arr += String.valueOf((int) (Math.random() * 10));
+			}
+			brr[i] += arr;
 		}
-		}
-
+		accountNo = brr[0] + "-" + brr[1] + "-" + brr[2];
+	}
 
 	public void setMoney(int money) {
 		this.money = money;

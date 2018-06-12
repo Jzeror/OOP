@@ -1,4 +1,5 @@
 package ui;
+
 /**
  비트뱅크
  기본통장(or마이너스통장)
@@ -16,6 +17,8 @@ package ui;
  **/
 import javax.swing.JOptionPane;
 import domain.Account;
+import domain.MinusAccount;
+
 enum Butt1 {
 	종료, 통장만들기;
 }
@@ -23,7 +26,8 @@ enum Butt1 {
 public class AccountMain {
 	public static void main(String[] args) {
 		Butt1[] buttons = { Butt1.종료, Butt1.통장만들기 };
-		Account ac=null;
+		Account ac = null;
+		MinusAccount bc = null;
 		while (true) {
 			Butt1 select = (Butt1) JOptionPane.showInputDialog(null, // frame
 					"MENU", // frame title
@@ -37,16 +41,31 @@ public class AccountMain {
 			case 종료:
 				return;
 			case 통장만들기:
-				ac=new Account();
-ac.setName(JOptionPane.showInputDialog("성명?"));
-ac.setUid(JOptionPane.showInputDialog("인뱅 아이디?"));
-ac.setPass(JOptionPane.showInputDialog("비밀번호?"));
-ac.setCreateDate();
-ac.setAccountNo();
-ac.setMoney(Integer.parseInt(JOptionPane.showInputDialog("초기 예치금액?")));
-				
-JOptionPane.showMessageDialog(null, ac.toString());
-break;
+				switch (JOptionPane.showInputDialog("1.입출금통장 2.마이너스통장")) {
+				case "1":
+					ac = new Account();
+					ac.setName(JOptionPane.showInputDialog("성명?"));
+					ac.setUid(JOptionPane.showInputDialog("인뱅 아이디?"));
+					ac.setPass(JOptionPane.showInputDialog("비밀번호?"));
+					ac.setCreateDate();
+					ac.setAccountNo();
+					ac.setMoney(Integer.parseInt(JOptionPane.showInputDialog("초기 예치금액?")));
+
+					JOptionPane.showMessageDialog(null, ac.toString());
+					break;
+				case "2":
+					bc = new MinusAccount();
+					bc.setName(JOptionPane.showInputDialog("성명?"));
+					bc.setUid(JOptionPane.showInputDialog("인뱅 아이디?"));
+					bc.setPass(JOptionPane.showInputDialog("비밀번호?"));
+					bc.setCreateDate();
+					bc.setAccountNo();
+					bc.setDebt(Integer.parseInt(JOptionPane.showInputDialog("대출금액?")));
+
+					JOptionPane.showMessageDialog(null, bc.toString());
+					break;
+
+				}
 			}
 		}
 	}
