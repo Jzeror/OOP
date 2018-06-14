@@ -20,14 +20,13 @@ import domain.Account;
 import domain.MinusAccount;
 
 enum Butt1 {
-	종료, 통장만들기;
+	종료, 통장만들기, 입금, 출금;
 }
 
 public class AccountMain {
 	public static void main(String[] args) {
-		Butt1[] buttons = { Butt1.종료, Butt1.통장만들기 };
+		Butt1[] buttons = { Butt1.종료, Butt1.통장만들기, Butt1.입금, Butt1.출금 };
 		Account ac = null;
-		MinusAccount bc = null;
 		while (true) {
 			Butt1 select = (Butt1) JOptionPane.showInputDialog(null, // frame
 					"MENU", // frame title
@@ -43,28 +42,42 @@ public class AccountMain {
 			case 통장만들기:
 				switch (JOptionPane.showInputDialog("1.입출금통장 2.마이너스통장")) {
 				case "1":
-					ac = new Account();
-					ac.setName(JOptionPane.showInputDialog("성명?"));
-					ac.setUid(JOptionPane.showInputDialog("인뱅 아이디?"));
-					ac.setPass(JOptionPane.showInputDialog("비밀번호?"));
-					ac.setCreateDate();
-					ac.setAccountNo();
+					ac = new Account(JOptionPane.showInputDialog("성명?"), JOptionPane.showInputDialog("인뱅 아이디?"),
+							JOptionPane.showInputDialog("비밀번호?"));
 					ac.setMoney(Integer.parseInt(JOptionPane.showInputDialog("초기 예치금액?")));
-
 					JOptionPane.showMessageDialog(null, ac.toString());
 					break;
 				case "2":
-					bc = new MinusAccount();
-					bc.setName(JOptionPane.showInputDialog("성명?"));
-					bc.setUid(JOptionPane.showInputDialog("인뱅 아이디?"));
-					bc.setPass(JOptionPane.showInputDialog("비밀번호?"));
-					bc.setCreateDate();
-					bc.setAccountNo();
-					bc.setDebt(Integer.parseInt(JOptionPane.showInputDialog("대출금액?")));
-
-					JOptionPane.showMessageDialog(null, bc.toString());
+					ac = new MinusAccount(JOptionPane.showInputDialog("성명?"), JOptionPane.showInputDialog("인뱅 아이디?"),
+							JOptionPane.showInputDialog("비밀번호?"));
+					((MinusAccount) ac).setLimit(Integer.parseInt(JOptionPane.showInputDialog("한도?")));
+					JOptionPane.showMessageDialog(null, ac.toString());
 					break;
 				}
+			case 입금:
+				int a = Integer.parseInt(JOptionPane.showInputDialog("입금하실 금액?"));
+				if (a < 0) {
+					JOptionPane.showMessageDialog(null, "잘못된 입력");
+					return;
+				}
+				ac.setMoney(a);
+				JOptionPane.showMessageDialog(null, "입금성공\n 잔액 :" + ac.getMoney());
+				break;
+			case 출금:
+				int withdraw=0;
+				if (((MinusAccount) ac).getLimit() != 0) {
+					withdraw= Integer.parseInt(JOptionPane.showInputDialog("출금하실 금액?"));
+			if(withdraw <((MinusAccount) ac).getLimit()+ac.getMoney() ) {
+				ac.setWithdraw(withdraw);
+				ac.getMoney();//출금 성공
+			}else {
+				//출금 불가능
+			}
+				} else {
+					
+				}
+				JOptionPane.showMessageDialog(null, "출금성공\n 잔액 :" + ac.getMoney());
+				break;
 			}
 		}
 	}

@@ -11,7 +11,7 @@ public class IPhone extends CellPhone{
 		
 	}
 	public String getData() {
-		return data;
+		return data; 
 	}
 public String toString() {
 //홍길동에게 010번호로 애플 제품 아이폰을 사용해서

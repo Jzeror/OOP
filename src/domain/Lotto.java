@@ -21,9 +21,13 @@ public class Lotto {
 				if (ball[i] == ball[j]) {
 					setBall();
 					i--;
+					if (i == -1) {
+						i = 0;
+					}
 				}
 			}
 		}
+		setResult();
 	}
 
 	public void setMoney(int money) {
@@ -37,13 +41,15 @@ public class Lotto {
 				i--;
 			}
 		}
+		setBallCon();
 	}
 
 	public void setResult() {
-		result = "";
+		String result = "";
 		for (int i = 0; i < 6; i++) {
 			result += ball[i] + " | ";
 		}
+		this.result = result;
 	}
 
 	public int getBallCon() {
@@ -51,7 +57,6 @@ public class Lotto {
 	}
 
 	public String getResult() {
-
 		return result;
 	}
 
@@ -60,8 +65,6 @@ public class Lotto {
 	}
 
 	public String toString() {
-
 		return String.format("%s", result);
 	}
-
 }

@@ -11,7 +11,7 @@ public class GalaxyPhone extends IPhone {
 		}
 		}
 	public void setSize() {
-		size="6";
+		size="6"; 
 	}	
 	public void setPotable() {
 		
@@ -27,7 +27,7 @@ public class GalaxyPhone extends IPhone {
 	public String toString() {
 		setSize();
 		super.setPortable(true);
-		return String.format("%s에게 %s 번호로 %s제품 %s인치 %s을 사용해서 %s한 상태로 %s이라고 %s.", super.getName(), super.getPhoneNum(),
+		return String.format("%s에게 %s 번호로 %s제품 %s인치 %s을 사용해서 %s한 상태로 %s이라고 %s.", getName(), getPhoneNum(),
 				BRAND, size, KIND, super.getMove(), super.getCall(), data);
 	}
 }

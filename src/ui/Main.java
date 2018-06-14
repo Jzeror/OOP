@@ -15,8 +15,9 @@ public class Main {
 		Grade[] brr = new Grade[2];
 		Salary salary = null;
 		Salary[] crr = new Salary[2];
-		Lotto lotto = null;
+		Lotto lotto = null; 
 		String[] drr = new String[200];
+		
 		while (true) {
 			String flag = JOptionPane.showInputDialog("0.종료\n" + "1.BMI입력 \n" + "2.BMI보기 \n" + "3.성적입력\n" + "4.성적표보기\n"
 					+ "5.월급입력\n" + "6.입력보기\n" + "7.로또\n" + "8.로또 확인\n");
@@ -64,7 +65,6 @@ public class Main {
 				salary.setDept(JOptionPane.showInputDialog("부서?"));
 				salary.setName(JOptionPane.showInputDialog("이름?"));
 				salary.setSal(Integer.parseInt(JOptionPane.showInputDialog("본봉?")));
-				salary.setBonus(Integer.parseInt(JOptionPane.showInputDialog("수당?")));
 				crr[count] = salary;
 				count++;
 				break;
@@ -80,19 +80,12 @@ public class Main {
 				lotto.setMoney(Integer.parseInt(JOptionPane.showInputDialog("얼마 구입?")));
 				for (int s = 0; s < lotto.getMoney() / 1000; s++) {
 					lotto.setBall();
-					lotto.setResult();
-					/*
-					 * lotto.setBall2(); lotto.setBall3(); lotto.setBall4(); lotto.setBall5();
-					 * lotto.setBall6();
-					 */
-
 					drr[s] = lotto.getResult();
-
 				}
 				break;
 			case "8":
 				output = "";
-				for (int i = 0; i < lotto.getMoney() / 1000; i++) {
+				for (int i = 0; i<lotto.getMoney() / 1000; i++) {
 					output += drr[i].toString() + "\n";
 				}
 				JOptionPane.showMessageDialog(null, output);
