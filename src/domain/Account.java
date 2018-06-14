@@ -39,14 +39,11 @@ public class Account {
 	}
 
 	public void setAccountNo() {
-		for (int i = 0; i < 3; i++) {
-			arr = "";
-			for (int s = 0; s < 3; s++) {
-				arr += String.valueOf((int) (Math.random() * 10));
-			}
-			brr[i] += arr;
+		accountNo="";
+		for(int i= 0 ; i<9 ; i++) {
+			accountNo += String.valueOf((int) (Math.random() * 10));
+			if(i==2||i==5) {accountNo+="-";}
 		}
-		accountNo = brr[0] + "-" + brr[1] + "-" + brr[2];
 	}
 
 	public void setMoney(int money) {
@@ -78,7 +75,7 @@ public class Account {
 	}
 
 	public String toString() {
-		return String.format("%s\n" + "%s\n" + "계좌번호 : %s \n" + "이름 : %s \n" + "생성일 : %s \n" + "잔액 : %d", BANK_NAME,
+		return String.format("%s\n" + "%s\n" + "계좌번호 : %s \n" + "이름 : %s \n" + "생성일 : %s \n" + "잔액 : %d원", BANK_NAME,
 				ACCOUNT_TYPE, accountNo, name, createDate, money);
 	}
 }

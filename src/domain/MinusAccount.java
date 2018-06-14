@@ -6,7 +6,7 @@ public class MinusAccount extends Account {
 	public int debt; // 대출금
 
 	public void setDebt(int debt) {
-		this.debt = debt;
+		this.debt = -debt;
 	}
 
 	public int getDebt() {
@@ -14,7 +14,7 @@ public class MinusAccount extends Account {
 	}
 
 	public String toString() {
-		return String.format("%s\n" + "%s\n" + "계좌번호 : %s \n" + "이름 : %s \n" + "생성일 : %s \n" + "잔액 : -%d", BANK_NAME,
+		return String.format("%s\n" + "%s\n" + "계좌번호 : %s \n" + "이름 : %s \n" + "생성일 : %s \n" + "잔액 : %d원", BANK_NAME,
 				ACCOUNT_TYPE, super.accountNo, super.name, super.createDate, debt);
 	}
 }
