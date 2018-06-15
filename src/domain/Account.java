@@ -41,7 +41,7 @@ public class Account {
 	}
 	
 	public void setMoney(int money) {
-		this.money += money;
+		this.money = money; //여기 +=의 기능을 AcoountService로 보냄
 	}
 
 	public void setDeposit(int deposit) {

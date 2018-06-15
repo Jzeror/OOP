@@ -35,19 +35,19 @@ public class SalaryMain {
 			case INTERNSHIP : 
 				JOptionPane.showMessageDialog(null,new Salary(
 						JOptionPane.showInputDialog("이름?"),
-						Integer.parseInt(JOptionPane.showInputDialog("월급?"))
+						JOptionPane.showInputDialog("월급?")
 						).toString());
 				break;
 			case EMPLOYEE :
 				JOptionPane.showMessageDialog(null,new StaffSalary(
 						JOptionPane.showInputDialog("이름?"),
-						Integer.parseInt(JOptionPane.showInputDialog("월급?"))
+						JOptionPane.showInputDialog("월급?") //변환도 클래스로
 						).toString());
 				break;
 			case BOARD :
 				JOptionPane.showMessageDialog(null,new OwnerSalary(
 						JOptionPane.showInputDialog("이름?"),
-						Integer.parseInt(JOptionPane.showInputDialog("월급?"))
+					JOptionPane.showInputDialog("월급?")
 						).toString());
 				break;
 			}

@@ -5,9 +5,9 @@ public class Salary {
 	String dept, name;
 	int sal;
 
-	public Salary(String name, int sal) {
+	public Salary(String name, String sal) {
 		setName(name);
-		this.sal = sal;
+		this.sal =Integer.parseInt(sal);
 		setDept(DEPT);
 	}
 	public Salary() {

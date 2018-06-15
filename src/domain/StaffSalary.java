@@ -4,7 +4,7 @@ public class StaffSalary extends Salary{
 	public static final String DEPT= "정직원";
 	protected int bonus; //10%
 
-public StaffSalary(String name, int sal) {
+public StaffSalary(String name, String sal) {
 	super(name,sal);
 	setDept(DEPT);
 	setBonus();
