@@ -28,7 +28,7 @@ public class AccountMainOld {
 		Butt2[] buttons = { Butt2.종료, Butt2.통장만들기, Butt2.입금, Butt2.출금 };
 		Account ac = null;
 		while (true) {
-			Butt2 select = (Butt1) JOptionPane.showInputDialog(null, // frame
+			Butt2 select = (Butt2) JOptionPane.showInputDialog(null, // frame
 					"MENU", // frame title
 					"SELECT  MENU", // order
 					JOptionPane.QUESTION_MESSAGE, // type
